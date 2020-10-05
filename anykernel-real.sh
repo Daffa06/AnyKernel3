@@ -15,7 +15,7 @@ device.name2=X00TD
 device.name3=ASUS_X00TD
 device.name4=
 device.name5=
-supported.versions=11
+supported.versions=
 supported.patchlevels=
 '; } # end properties
 
