@@ -15,7 +15,7 @@ device.name2=X00TD
 device.name3=ASUS_X00TD
 device.name4=
 device.name5=
-supported.versions=
+supported.versions=11
 supported.patchlevels=
 '; } # end properties
 
@@ -29,11 +29,6 @@ ramdisk_compression=auto;
 # import patching functions/variables - see for reference
 . tools/ak3-core.sh;
 
-# Mount partitions as rw
-mount /system;
-mount /vendor;
-mount -o remount,rw /system;
-mount -o remount,rw /vendor;
 
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
@@ -58,6 +53,10 @@ ui_print "cleaning up..."
  rm -rf $ramdisk/init.PBH.rc
  rm -rf $ramdisk/init.Pbh.rc
  rm -rf $ramdisk/init.overdose.rc
+ rm -rf $ramdisk/init.infinity.rc
+ rm -rf $ramdisk/init.predator.rc
+ rm -rf $ramdisk/init.error.rc
+ rm -rf $ramdisk/init.venus.rc
 
 backup_file init.rc;
 remove_line init.rc "import /init.darkonah.rc";
@@ -68,40 +67,20 @@ remove_line init.rc "import /init.azure.rc"
 remove_line init.rc "import /init.PbH.rc"
 remove_line init.rc "import /init.Pbh.rc"
 remove_line init.rc "import /init.overdose.rc"
+remove_line init.rc "import /init.infinity.rc"
+remove_line init.rc "import /init.predator.rc"
+remove_line init.rc "import /init.error.rc"
+remove_line init.rc "import /init.venus.rc"
 
-ui_print " ";
-# rearm perfboostsconfig.xml
-if [ ! -f /vendor/etc/perf/perfboostsconfig.xml ]; then
-	mv /vendor/etc/perf/perfboostsconfig.xml.bak /vendor/etc/perf/perfboostsconfig.xml;
-	mv /vendor/etc/perf/perfboostsconfig.xml.bkp /vendor/etc/perf/perfboostsconfig.xml;
-fi
-
-# rearm commonresourceconfigs.xml
-if [ ! -f /vendor/etc/perf/commonresourceconfigs.xml ]; then
-	mv /vendor/etc/perf/commonresourceconfigs.xml.bak /vendor/etc/perf/commonresourceconfigs.xml;
-	mv /vendor/etc/perf/commonresourceconfigs.xml.bkp /vendor/etc/perf/commonresourceconfigs.xml;
-fi
-
-# rearm targetconfig.xml
-if [ ! -f /vendor/etc/perf/targetconfig.xml ]; then
-	mv /vendor/etc/perf/targetconfig.xml.bak /vendor/etc/perf/targetconfig.xml;
-	mv /vendor/etc/perf/targetconfig.xml.bkp /vendor/etc/perf/targetconfig.xml;
-fi
-
-# rearm targetresourceconfigs.xml
-if [ ! -f /vendor/etc/perf/targetresourceconfigs.xml ]; then
-	mv /vendor/etc/perf/targetresourceconfigs.xml.bak /vendor/etc/perf/targetresourceconfigs.xml;
-	mv /vendor/etc/perf/targetresourceconfigs.xml.bkp /vendor/etc/perf/targetresourceconfigs.xml;
-fi
-
-# rearm powerhint.xml
-if [ ! -f /vendor/etc/powerhint.xml ]; then
-	mv /vendor/etc/powerhint.xml.bak /vendor/etc/powerhint.xml;
-	mv /vendor/etc/powerhint.xml.bkp /vendor/etc/powerhint.xml;
+# Set Android version for kernel
+ver="$(file_getprop /system/build.prop ro.build.version.release)"
+if [ ! -z "$ver" ]; then
+  patch_cmdline "androidboot.version" "androidboot.version=$ver"
+else
+  patch_cmdline "androidboot.version" ""
 fi
 
 # end ramdisk changes
 
 write_boot;
 ## end install
-
