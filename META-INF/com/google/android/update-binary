@@ -458,6 +458,14 @@ if [ -f banner ]; then
   ui_printfile banner;
   ui_print " " " ";
 fi;
+ui_print " db   db d88888b d8888b  d888888b d88888D ";
+ui_print " 88   88 88      88   8D    88        d8  ";
+ui_print " 88ooo88 88ooooo 88oobY     88       d8   ";
+ui_print " 88   88 88      88 8b      88      d8    ";
+ui_print " 88   88 88      88  88     88     d8  db ";
+ui_print " YP   YP Y88888P 88   YD    YP    d88888P ";
+ui_print "           "Happy Random Bug              ";
+ui_print "  AnyKernel3 by osm0sis @ xda-developers  ";
 
 KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
 ui_print "$KERNEL_STRING";
@@ -466,7 +474,6 @@ if [ -f version ]; then
   ui_printfile version;
   ui_print " ";
 fi;
-ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " " " ";
 
 setup_env;
 
