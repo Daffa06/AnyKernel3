@@ -409,7 +409,7 @@ ui_print " %%  %%  %%      %%      %%      %%  %%   ";
 ui_print " %%%%%%  %%%%    %%      %%      %%  %%   ";
 ui_print " %%  %%  %%      %%      %%      %%  %%   ";
 ui_print " %%  %%  %%%%%%  %%%%%%  %%%%%%   %%%%    ";
-ui_print "     HAPPY FLASHING & OKAY KEEP CALM      ";
+ui_print "     HAPPY FLASHING OKAY & KEEP CALM      ";
 ui_print "  AnyKernel3 by osm0sis @ xda-developers  ";
 
 KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
