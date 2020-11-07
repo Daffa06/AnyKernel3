@@ -404,9 +404,9 @@ if [ -f banner ]; then
   ui_printfile banner;
   ui_print " " " ";
 fi;
-ui_print "         dMMMMMMP dMMMMMP .aMMMb      ";
-ui_print "          dMP   dMP     dMP"dMP       ";
-ii_print "         dMP   dMMMP   dMMMMMP        ";
+ui_print "         dMMMMMMP dMMMMMP aMMMb       ";
+ui_print "          dMP   dMP     dMP dMP       ";
+ui_print "         dMP   dMMMP   dMMMMMP        ";
 ui_print "        dMP   dMP     dMP dMP         ";
 ui_print "       dMP   dMMMMMP dMP dMP          ";
 ui_print "      Tea Kernel By @MinumTea         ";
