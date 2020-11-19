@@ -409,7 +409,7 @@ ui_print "          dMP   dMP     dMP dMP       ";
 ui_print "         dMP   dMMMP   dMMMMMP        ";
 ui_print "        dMP   dMP     dMP dMP         ";
 ui_print "       dMP   dMMMMMP dMP dMP          ";
-ui_print "      Tea Kernel By @MinumTea         ";
+ui_print "     Tea Kernel By @TeaXLatte         ";
 ui_print "AnyKernel3 by osm0sis @ xda-developers";
 
 KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
