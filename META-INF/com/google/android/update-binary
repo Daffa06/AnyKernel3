@@ -410,10 +410,9 @@ ui_print "         dMP   dMMMP   dMMMMMP        ";
 ui_print "        dMP   dMP     dMP dMP         ";
 ui_print "       dMP   dMMMMMP dMP dMP          ";
 ui_print "     Tea Kernel By @TeaXLatte         ";
+ui_print " ";
 ui_print "AnyKernel3 by osm0sis @ xda-developers";
 
-KERNEL_STRING="$(file_getprop anykernel.sh kernel.string)";
-ui_print "$KERNEL_STRING";
 if [ -f version ]; then
   ui_print " ";
   ui_printfile version;
@@ -442,4 +441,4 @@ if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
 
-ui_print " " " " "Done!";
+ui_print " Dont Forget To Relax Time ";
