@@ -19,11 +19,6 @@ supported.versions=
 supported.patchlevels=
 '; } # end properties
 
-# shell variables
-block=/dev/block/platform/soc/c0c4000.sdhci/by-name/boot;
-is_slot_device=0;
-ramdisk_compression=auto;
-
 
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
