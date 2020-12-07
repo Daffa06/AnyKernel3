@@ -398,18 +398,22 @@ if [ -f version ]; then
   ui_print " ";
 fi;
 
-ui_print "   **********  ********      **       ";
-ui_print "  /////**///  /**/////      ****      ";
-ui_print "      /**     /**          **//**     ";
-ui_print "      /**     /*******    **  //**    ";
-ui_print "      /**     /**////    **********   ";
-ui_print "      /**     /**        /**//////**  ";
-ui_print "      /**     /********  /**     /**  ";
-ui_print "      ///     /////////  ///     ///  ";
-ui_print "         Tea-Kernel by Teaxlatte      ";
-ui_print " ";
+ui_print "======================================";
+ui_print "=  **********  ********      **      =";
+ui_print "= /////**///  /**/////      ****     =";
+ui_print "=     /**     /**          **//**    =";
+ui_print "=     /**     /*******    **  //**   =";
+ui_print "=     /**     /**////    **********  =";
+ui_print "=     /**     /**        /**//////** =";
+ui_print "=     /**     /********  /**     /** =";
+ui_print "=     ///     /////////  ///     /// =";
+ui_print "======================================";
+ui_print "=        Tea-Kernel by Teaxlatte     =";
+ui_print "=              EAS and HMP           =";
+ui_print "======================================";
+ui_print "=     Support Android Version 8-11   =";
+ui_print "======================================";
 ui_print "AnyKernel3 by osm0sis @ xda-developers";
-ui_print " ";
 
 setup_env;
 
@@ -417,7 +421,7 @@ do_devicecheck;
 do_versioncheck;
 do_levelcheck;
 
-ui_print "Flash Tea Kernel Bentaran Ya...";
+ui_print "Flashing Tea Kernel.....";
 CORE=$($BB grep -oE 'ak.*core.sh' anykernel.sh);
 test -f tools/$CORE || $BB ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
 PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel.sh $2;
