@@ -4,13 +4,13 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Webs Kernel By @Hazukashio
+kernel.string=Scape
 do.devicecheck=1
 do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=ASUS_X00TD
+device.name1=AJUJ_RETARD
 device.name2=X00TD
 device.name3=X00T
 device.name4=
@@ -57,6 +57,7 @@ ui_print "cleaning up..."
  rm -rf $ramdisk/init.predator.rc
  rm -rf $ramdisk/init.error.rc
  rm -rf $ramdisk/init.venus.rc
+ rm -rf $ramdisk/init.spectrum.rc
 
 backup_file init.rc;
 remove_line init.rc "import /init.darkonah.rc";
@@ -71,6 +72,7 @@ remove_line init.rc "import /init.infinity.rc"
 remove_line init.rc "import /init.predator.rc"
 remove_line init.rc "import /init.error.rc"
 remove_line init.rc "import /init.venus.rc"
+remove_line init.rc "import /init.spectrum.rc"
 
 # Set Android version for kernel
 ver="$(file_getprop /system/build.prop ro.build.version.release)"
