@@ -197,20 +197,20 @@ abort() {
   ui_print "$@";
   debugging;
   restore_env;
-  if [ ! -f anykernel.sh -o "$(file_getprop anykernel.sh do.cleanuponabort 2>/dev/null)" == 1 ]; then
+  if [ ! -f anykernel-real.sh -o "$(file_getprop anykernel-real.sh do.cleanuponabort 2>/dev/null)" == 1 ]; then
     cleanup;
   fi;
   exit 1;
 }
 do_devicecheck() {
-  test "$(file_getprop anykernel.sh do.devicecheck)" == 1 || return 1;
+  test "$(file_getprop anykernel-real.sh do.devicecheck)" == 1 || return 1;
   local device devicename match product testname vendordevice vendorproduct;
   ui_print "Checking device...";
   device=$(getprop ro.product.device 2>/dev/null);
   product=$(getprop ro.build.product 2>/dev/null);
   vendordevice=$(getprop ro.product.vendor.device 2>/dev/null);
   vendorproduct=$(getprop ro.vendor.product.device 2>/dev/null);
-  for testname in $(file_getprop anykernel.sh 'device.name.*'); do
+  for testname in $(file_getprop anykernel-real.sh 'device.name.*'); do
     for devicename in $device $product $vendordevice $vendorproduct; do
       if [ "$devicename" == "$testname" ]; then
         ui_print "$testname" " ";
@@ -233,10 +233,10 @@ int2ver() {
   fi;
 }
 do_versioncheck() {
-  test "$(file_getprop anykernel.sh supported.versions)" || return 1;
+  test "$(file_getprop anykernel-real.sh supported.versions)" || return 1;
   local android_ver hi_ver lo_ver parsed_ver supported supported_ver;
   ui_print "Checking Android version...";
-  supported_ver=$(file_getprop anykernel.sh supported.versions | $BB tr -d '[:space:]');
+  supported_ver=$(file_getprop anykernel-real.sh supported.versions | $BB tr -d '[:space:]');
   android_ver=$(file_getprop /system/build.prop ro.build.version.release);
   parsed_ver=$(int2ver $android_ver);
   if echo $supported_ver | $BB grep -q '-'; then
@@ -260,10 +260,10 @@ do_versioncheck() {
   fi;
 }
 do_levelcheck() {
-  test "$(file_getprop anykernel.sh supported.patchlevels)" || return 1;
+  test "$(file_getprop anykernel-real.sh supported.patchlevels)" || return 1;
   local android_lvl hi_lvl lo_lvl parsed_lvl supported_lvl;
   ui_print "Checking Android security patch level...";
-  supported_lvl=$(file_getprop anykernel.sh supported.patchlevels | $BB grep -oE '[0-9]{4}-[0-9]{2}|-');
+  supported_lvl=$(file_getprop anykernel-real.sh supported.patchlevels | $BB grep -oE '[0-9]{4}-[0-9]{2}|-');
   android_lvl=$(file_getprop /system/build.prop ro.build.version.security_patch);
   parsed_lvl=$(echo $android_lvl | $BB grep -oE '[0-9]{4}-[0-9]{2}');
   if echo $supported_lvl | $BB grep -q '^\-'; then
@@ -408,12 +408,12 @@ ui_print "=     /**     /**        /**//////** =";
 ui_print "=     /**     /********  /**     /** =";
 ui_print "=     ///     /////////  ///     /// =";
 ui_print "======================================";
-ui_print "=        Tea-Kernel by Teaxlatte     =";
-ui_print "=             EAS and HMP            =";
+ui_print "=       Tea-Kernel by Teaxlatte      =";
+ui_print "=             CAF KURNAL             =";
 ui_print "======================================";
 ui_print "=     Support Android Version 8-11   =";
+ui_print "=   AK3 by osm0sis @ xda-developers  =";
 ui_print "======================================";
-ui_print "AnyKernel3 by osm0sis @ xda-developers";
 
 setup_env;
 
@@ -422,9 +422,9 @@ do_versioncheck;
 do_levelcheck;
 
 ui_print "Flashing Tea Kernel.....";
-CORE=$($BB grep -oE 'ak.*core.sh' anykernel.sh);
+CORE=$($BB grep -oE 'ak.*core.sh' anykernel-real.sh);
 test -f tools/$CORE || $BB ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
-PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel.sh $2;
+PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel-real.sh $2;
 if [ $? != 0 ]; then
   abort;
 fi;
@@ -434,7 +434,7 @@ do_modules;
 debugging;
 restore_env;
 
-if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
+if [ "$(file_getprop anykernel-real.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
 
