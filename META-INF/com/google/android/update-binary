@@ -398,22 +398,24 @@ if [ -f version ]; then
   ui_print " ";
 fi;
 
-ui_print "======================================";
-ui_print "=  **********  ********      **      =";
-ui_print "= /////**///  /**/////      ****     =";
-ui_print "=     /**     /**          **//**    =";
-ui_print "=     /**     /*******    **  //**   =";
-ui_print "=     /**     /**////    **********  =";
-ui_print "=     /**     /**        /**//////** =";
-ui_print "=     /**     /********  /**     /** =";
-ui_print "=     ///     /////////  ///     /// =";
-ui_print "======================================";
-ui_print "=       Tea-Kernel by Teaxlatte      =";
-ui_print "=             CAF KURNAL             =";
-ui_print "======================================";
-ui_print "=     Support Android Version 8-11   =";
-ui_print "=   AK3 by osm0sis @ xda-developers  =";
-ui_print "======================================";
+ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
+ui_print " 	        	 ......                    ";
+ui_print "))))))))      ........  	^^       ^^	 ||";
+ui_print "))))))))    ..        ..   ^^     ^^ 	 ||";
+ui_print ")))	 	 ..          ..    ^^   ^^   ||";
+ui_print ")))		..            ..    ^^ ^^    ||";
+ui_print ")))))))) ..              ..    ^^^     ||";
+ui_print "))))))))  ..            ..     ^^^     ||";
+ui_print ")))		 ..          ..     ^^ ^^    ||";
+ui_print ")))		  ..        ..     ^^   ^^   ||";
+ui_print ")))		    ........      ^^     ^^  ||";
+ui_print ")))	         ......      ^^       ^^ ||";
+ui_print "						                   ";
+ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
+ui_print "!         Foxi Kernel By Daffa          !";
+ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
+ui_print "!    AK3 by osm0sis @ xda-developers    !";
+ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
 
 setup_env;
 
