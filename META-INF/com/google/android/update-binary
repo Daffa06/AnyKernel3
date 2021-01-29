@@ -398,24 +398,23 @@ if [ -f version ]; then
   ui_print " ";
 fi;
 
-ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
-ui_print "               ......                    ";
-ui_print "))))))))      ........     \\       // ||";
-ui_print "))))))))    ..        ..    \\     //  ||";
-ui_print ")))        ..          ..    \\   //   ||";
-ui_print ")))       ..            ..    \\ //    ||";
-ui_print ")))))))) ..              ..    \\/     ||";
-ui_print "))))))))  ..            ..     /\\     ||";
-ui_print ")))        ..          ..     // \\    ||";
-ui_print ")))         ..        ..     //   \\   ||";
-ui_print ")))           ........      //     \\  ||";
-ui_print ")))            ......      //       \\ ||";
-ui_print "                                         ";
-ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
-ui_print "!         Foxi Kernel By Daffa          !";
-ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
-ui_print "!    AK3 by osm0sis @ xda-developers    !";
-ui_print ">>>>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<<";
+ui_print ">>>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<";
+ui_print " ";
+ui_print " ||=======      ****  xx       xx  ||";
+ui_print " ||=======     ******  xx     xx   ||";
+ui_print " ||           **    **  xx   xx    ||";
+ui_print " ||=======   **      **  xx xx     ||";
+ui_print " ||=======  **        **  xxx      ||";
+ui_print " ||          **      **  xx xx     ||";
+ui_print " ||           **    **  xx    xx   ||";
+ui_print " ||            ******  xx      xx  ||";
+ui_print " ||             ****  xx        xx ||";
+ui_print " ";
+ui_print ">>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<";
+ui_print "!        Foxi Kernel By Daffa       !";
+ui_print ">>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<";
+ui_print "!  AK3 by osm0sis @ xda-developers  !";
+ui_print ">>>>>>>>>>>>>>>>===<<<<<<<<<<<<<<<<<<";
 
 setup_env;
 
