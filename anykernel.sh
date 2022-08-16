@@ -10,17 +10,17 @@ do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=maguro
-device.name2=toro
-device.name3=toroplus
-device.name4=tuna
+device.name1=X00TD
+device.name2=X00T
+device.name3=
+device.name4=
 device.name5=
 supported.versions=
 supported.patchlevels=
 '; } # end properties
 
 # shell variables
-block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;
+block=/dev/block/platform/soc/c0c4000.sdhci/by-name/boot;
 is_slot_device=0;
 ramdisk_compression=auto;
 patch_vbmeta_flag=auto;
@@ -42,21 +42,78 @@ dump_boot;
 
 # begin ramdisk changes
 
+#Remove old kernel stuffs from ramdisk
+ui_print "cleaning up..."
+ rm -rf $ramdisk/init.special_power.sh
+ rm -rf $ramdisk/init.darkonah.rc
+ rm -rf $ramdisk/init.spectrum.rc
+ rm -rf $ramdisk/init.spectrum.sh
+ rm -rf $ramdisk/init.boost.rc
+ rm -rf $ramdisk/init.trb.rc
+ rm -rf $ramdisk/init.azure.rc
+ rm -rf $ramdisk/init.PBH.rc
+ rm -rf $ramdisk/init.Pbh.rc
+ rm -rf $ramdisk/init.overdose.rc
+ rm -rf $ramdisk/init.infinity.rc
+ rm -rf $ramdisk/init.predator.rc
+ rm -rf $ramdisk/init.error.rc
+ rm -rf $ramdisk/init.venus.rc
+ rm -rf $ramdisk/init.spectrum.rc
+
+backup_file init.rc;
+remove_line init.rc "import /init.darkonah.rc";
+remove_line init.rc "import /init.boost.rc";
+remove_line init.rc "import /init.trb.rc"
+remove_line init.rc "import /init.azure.rc"
+remove_line init.rc "import /init.PbH.rc"
+remove_line init.rc "import /init.Pbh.rc"
+remove_line init.rc "import /init.overdose.rc"
+remove_line init.rc "import /init.infinity.rc"
+remove_line init.rc "import /init.predator.rc"
+remove_line init.rc "import /init.error.rc"
+remove_line init.rc "import /init.venus.rc"
+
 # init.rc
 backup_file init.rc;
-replace_string init.rc "cpuctl cpu,timer_slack" "mount cgroup none /dev/cpuctl cpu" "mount cgroup none /dev/cpuctl cpu,timer_slack";
+remove_line init.rc "import init.spectrum.rc"
+remove_line init.rc "/import init.spectrum.rc"
 
-# init.tuna.rc
-backup_file init.tuna.rc;
-insert_line init.tuna.rc "nodiratime barrier=0" after "mount_all /fstab.tuna" "\tmount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/userdata /data remount nosuid nodev noatime nodiratime barrier=0";
-append_file init.tuna.rc "bootscript" init.tuna;
-
-# fstab.tuna
-backup_file fstab.tuna;
-patch_fstab fstab.tuna /system ext4 options "noatime,barrier=1" "noatime,nodiratime,barrier=0";
-patch_fstab fstab.tuna /cache ext4 options "barrier=1" "barrier=0,nomblk_io_submit";
-patch_fstab fstab.tuna /data ext4 options "data=ordered" "nomblk_io_submit,data=writeback";
-append_file fstab.tuna "usbdisk" fstab;
+if [ -e $ramdisk/init.spectrum.rc ];then
+  rm -rf $ramdisk/init.spectrum.rc
+  ui_print "delete /init.spectrum.rc"
+fi
+if [ -e $ramdisk/init.spectrum.sh ];then
+  rm -rf $ramdisk/init.spectrum.sh
+  ui_print "delete /init.spectrum.sh"
+fi
+if [ -e $ramdisk/sbin/init.spectrum.rc ];then
+  rm -rf $ramdisk/sbin/init.spectrum.rc
+  ui_print "delete /sbin/init.spectrum.rc"
+fi
+if [ -e $ramdisk/sbin/init.spectrum.sh ];then
+  rm -rf $ramdisk/sbin/init.spectrum.sh
+  ui_print "delete /sbin/init.spectrum.sh"
+fi
+if [ -e $ramdisk/etc/init.spectrum.rc ];then
+  rm -rf $ramdisk/etc/init.spectrum.rc
+  ui_print "delete /etc/init.spectrum.rc"
+fi
+if [ -e $ramdisk/etc/init.spectrum.sh ];then
+  rm -rf $ramdisk/etc/init.spectrum.sh
+  ui_print "delete /etc/init.spectrum.sh"
+fi
+if [ -e $ramdisk/init.aurora.rc ];then
+  rm -rf $ramdisk/init.aurora.rc
+  ui_print "delete /init.aurora.rc"
+fi
+if [ -e $ramdisk/sbin/init.aurora.rc ];then
+  rm -rf $ramdisk/sbin/init.aurora.rc
+  ui_print "delete /sbin/init.aurora.rc"
+fi
+if [ -e $ramdisk/etc/init.aurora.rc ];then
+  rm -rf $ramdisk/etc/init.aurora.rc
+  ui_print "delete /etc/init.aurora.rc"
+fi
 
 # end ramdisk changes
 

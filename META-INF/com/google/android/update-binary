@@ -472,7 +472,11 @@ if [ -f version ]; then
   ui_printfile version;
   ui_print " ";
 fi;
-ui_print " " "AnyKernel3 by osm0sis @ xda-developers" " ";
+ui_print "  >  >AnyKernel3 by osm0sis @ xda-developers<  < ";
+ui_print "  >  >  >  >  >Flashing On Progress<  <  <  <  < ";
+ui_print "                                                 ";
+ui_print "  >  >  >  >  >  >  >NoName<  <  <  <  <  <  <";
+ui_print " by daffa";
 $BB grep -oE 'AK_BASE.*' META-INF/com/google/android/updater-script >&2;
 ui_print " ";
 
@@ -482,7 +486,7 @@ do_devicecheck;
 do_versioncheck;
 do_levelcheck;
 
-ui_print "Installing...";
+ui_print "Hold On...";
 CORE=$($BB grep -oE 'ak.*core.sh' anykernel.sh);
 [ -f tools/$CORE ] || $BB ln -s $AKHOME/tools/ak*-core.sh $AKHOME/tools/$CORE;
 PATH="$AKHOME/bin:$PATH" home=$AKHOME $BB ash anykernel.sh $2;
@@ -499,4 +503,4 @@ if [ "$(file_getprop anykernel.sh do.cleanup)" == 1 ]; then
   cleanup;
 fi;
 
-ui_print " " " " "Done!";
+ui_print "Done, don't forget wipe cache/dalvik and reboot :0";
