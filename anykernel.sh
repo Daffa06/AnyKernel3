@@ -34,44 +34,23 @@ patch_vbmeta_flag=auto;
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
 set_perm_recursive 0 0 755 644 $ramdisk/*;
-set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
-
+set_perm_recursive 0 0 755 755 $ramdisk/init* $ramdisk/sbin;
 
 ## AnyKernel boot install
 dump_boot;
+
+# Mount partitions as rw
+mount /system;
+mount /vendor;
+mount -o remount,rw /system;
+mount -o remount,rw /vendor;
 
 # begin ramdisk changes
 
 #Remove old kernel stuffs from ramdisk
 ui_print "cleaning up..."
- rm -rf $ramdisk/init.special_power.sh
- rm -rf $ramdisk/init.darkonah.rc
- rm -rf $ramdisk/init.spectrum.rc
- rm -rf $ramdisk/init.spectrum.sh
- rm -rf $ramdisk/init.boost.rc
- rm -rf $ramdisk/init.trb.rc
- rm -rf $ramdisk/init.azure.rc
- rm -rf $ramdisk/init.PBH.rc
- rm -rf $ramdisk/init.Pbh.rc
- rm -rf $ramdisk/init.overdose.rc
- rm -rf $ramdisk/init.infinity.rc
- rm -rf $ramdisk/init.predator.rc
- rm -rf $ramdisk/init.error.rc
- rm -rf $ramdisk/init.venus.rc
- rm -rf $ramdisk/init.spectrum.rc
-
-backup_file init.rc;
-remove_line init.rc "import /init.darkonah.rc";
-remove_line init.rc "import /init.boost.rc";
-remove_line init.rc "import /init.trb.rc"
-remove_line init.rc "import /init.azure.rc"
-remove_line init.rc "import /init.PbH.rc"
-remove_line init.rc "import /init.Pbh.rc"
-remove_line init.rc "import /init.overdose.rc"
-remove_line init.rc "import /init.infinity.rc"
-remove_line init.rc "import /init.predator.rc"
-remove_line init.rc "import /init.error.rc"
-remove_line init.rc "import /init.venus.rc"
+rm -rf $ramdisk/*.sh
+rm -rf $ramdisk/*.rc
 
 # init.rc
 backup_file init.rc;
