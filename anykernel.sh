@@ -42,7 +42,13 @@ dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_b
 
 # init.rc
 backup_file init.rc;
-insert_line init.rc "input_boost_freq_disable" after "on property:sys.boot_completed=1" "\twrite /sys/module/cpu_boost/parameters/input_boost_freq \"0:0 4:0 7:0\"";
+
+# Disable Input Boost Default
+# 1. Matikan CAF CPU Input Boost (Biar Baterai Irit saat Scrolling)
+insert_line init.rc "input_boost_freq" after "on property:sys.boot_completed=1" "\twrite /sys/module/cpu_boost/parameters/input_boost_freq \"0:0 4:0 7:0\"";
+
+# D2TW
+insert_line init.rc "touchpanel/double_tap" after "on property:sys.boot_completed=1" "\twrite /sys/touchpanel/double_tap 0\n\twrite /sys/touchpanel/double_tap 1";
 
 # init.tuna.rc
 # backup_file init.tuna.rc;
